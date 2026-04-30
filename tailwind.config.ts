@@ -57,6 +57,22 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        success: "hsl(var(--success))",
+        warning: "hsl(var(--warning))",
+        "primary-glow": "hsl(var(--primary-glow))",
+        status: {
+          idea: "hsl(var(--status-idea))",
+          script: "hsl(var(--status-script))",
+          production: "hsl(var(--status-production))",
+          ready: "hsl(var(--status-ready))",
+          published: "hsl(var(--status-published))",
+          archived: "hsl(var(--status-archived))",
+        },
+        platform: {
+          tiktok: "hsl(var(--platform-tiktok))",
+          reels: "hsl(var(--platform-reels))",
+          shorts: "hsl(var(--platform-shorts))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
