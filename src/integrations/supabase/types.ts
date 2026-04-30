@@ -14,7 +14,247 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      analytics: {
+        Row: {
+          comments: number
+          content_id: string
+          fetched_at: string
+          id: string
+          likes: number
+          platform: Database["public"]["Enums"]["platform_type"]
+          shares: number
+          user_id: string
+          views: number
+        }
+        Insert: {
+          comments?: number
+          content_id: string
+          fetched_at?: string
+          id?: string
+          likes?: number
+          platform: Database["public"]["Enums"]["platform_type"]
+          shares?: number
+          user_id: string
+          views?: number
+        }
+        Update: {
+          comments?: number
+          content_id?: string
+          fetched_at?: string
+          id?: string
+          likes?: number
+          platform?: Database["public"]["Enums"]["platform_type"]
+          shares?: number
+          user_id?: string
+          views?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "analytics_content_id_fkey"
+            columns: ["content_id"]
+            isOneToOne: false
+            referencedRelation: "content_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      content_items: {
+        Row: {
+          created_at: string
+          hashtags: string[] | null
+          hook: string | null
+          id: string
+          idea: string | null
+          metadata: Json | null
+          position: number
+          scheduled_at: string | null
+          script: string | null
+          status: Database["public"]["Enums"]["content_status"]
+          thumbnail_url: string | null
+          title: string
+          updated_at: string
+          user_id: string
+          video_url: string | null
+          voice_url: string | null
+        }
+        Insert: {
+          created_at?: string
+          hashtags?: string[] | null
+          hook?: string | null
+          id?: string
+          idea?: string | null
+          metadata?: Json | null
+          position?: number
+          scheduled_at?: string | null
+          script?: string | null
+          status?: Database["public"]["Enums"]["content_status"]
+          thumbnail_url?: string | null
+          title?: string
+          updated_at?: string
+          user_id: string
+          video_url?: string | null
+          voice_url?: string | null
+        }
+        Update: {
+          created_at?: string
+          hashtags?: string[] | null
+          hook?: string | null
+          id?: string
+          idea?: string | null
+          metadata?: Json | null
+          position?: number
+          scheduled_at?: string | null
+          script?: string | null
+          status?: Database["public"]["Enums"]["content_status"]
+          thumbnail_url?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+          video_url?: string | null
+          voice_url?: string | null
+        }
+        Relationships: []
+      }
+      content_platforms: {
+        Row: {
+          content_id: string
+          created_at: string
+          id: string
+          platform: Database["public"]["Enums"]["platform_type"]
+          post_id: string | null
+          post_url: string | null
+          published_at: string | null
+          status: string
+          user_id: string
+        }
+        Insert: {
+          content_id: string
+          created_at?: string
+          id?: string
+          platform: Database["public"]["Enums"]["platform_type"]
+          post_id?: string | null
+          post_url?: string | null
+          published_at?: string | null
+          status?: string
+          user_id: string
+        }
+        Update: {
+          content_id?: string
+          created_at?: string
+          id?: string
+          platform?: Database["public"]["Enums"]["platform_type"]
+          post_id?: string | null
+          post_url?: string | null
+          published_at?: string | null
+          status?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_platforms_content_id_fkey"
+            columns: ["content_id"]
+            isOneToOne: false
+            referencedRelation: "content_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      trending_topics: {
+        Row: {
+          description: string | null
+          discovered_at: string
+          id: string
+          metadata: Json | null
+          platform: Database["public"]["Enums"]["platform_type"] | null
+          score: number | null
+          source: string | null
+          topic: string
+          used: boolean
+          user_id: string | null
+        }
+        Insert: {
+          description?: string | null
+          discovered_at?: string
+          id?: string
+          metadata?: Json | null
+          platform?: Database["public"]["Enums"]["platform_type"] | null
+          score?: number | null
+          source?: string | null
+          topic: string
+          used?: boolean
+          user_id?: string | null
+        }
+        Update: {
+          description?: string | null
+          discovered_at?: string
+          id?: string
+          metadata?: Json | null
+          platform?: Database["public"]["Enums"]["platform_type"] | null
+          score?: number | null
+          source?: string | null
+          topic?: string
+          used?: boolean
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      user_settings: {
+        Row: {
+          brand_voice: string | null
+          default_voice_id: string | null
+          metadata: Json | null
+          n8n_webhook_create: string | null
+          n8n_webhook_publish: string | null
+          n8n_webhook_regenerate: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          brand_voice?: string | null
+          default_voice_id?: string | null
+          metadata?: Json | null
+          n8n_webhook_create?: string | null
+          n8n_webhook_publish?: string | null
+          n8n_webhook_regenerate?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          brand_voice?: string | null
+          default_voice_id?: string | null
+          metadata?: Json | null
+          n8n_webhook_create?: string | null
+          n8n_webhook_publish?: string | null
+          n8n_webhook_regenerate?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +263,14 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      content_status:
+        | "idea"
+        | "script"
+        | "production"
+        | "ready"
+        | "published"
+        | "archived"
+      platform_type: "tiktok" | "reels" | "shorts"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +397,16 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      content_status: [
+        "idea",
+        "script",
+        "production",
+        "ready",
+        "published",
+        "archived",
+      ],
+      platform_type: ["tiktok", "reels", "shorts"],
+    },
   },
 } as const
